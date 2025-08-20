@@ -35,14 +35,6 @@ class Logger {
         $this->tag = $tag;
     }
 
-    private function __destruct() {
-        // Close the logfile if it is opened
-        if(self::$logfile !== null) {
-            fclose(self::$logfile);
-            self::$logfile = null;
-        }
-    }
-
     public static function tag(string $tag): Logger {
         if(!isset(self::$instances[$tag])) {
             self::$instances[$tag] = new Logger($tag);
@@ -66,7 +58,7 @@ class Logger {
     }
 
     private function log(LogLevel $level, mixed $message): void {
-        if($level->value < self::$minLogLevel->value) {
+        if($level->value > self::$minLogLevel->value) { // Inverted logic because LogLevel is an enum with values from 1 (FATAL) to 6 (TRACE)
             // Skip logging if the log level is below the minimum log level
             return;
         }
