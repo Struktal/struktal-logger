@@ -1,0 +1,17 @@
+{
+    "name": "struktal/struktal-logger",
+    "description": "PHP library to write log messages to a file",
+    "keywords": [
+        "logging"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "autoload":{
+        "psr-4": {
+            "struktal\\Logger\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">=8.2.0"
+    }
+}
