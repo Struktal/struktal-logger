@@ -35,7 +35,7 @@ class Logger {
         $this->tag = $tag;
     }
 
-    public static function tag(string $tag): Logger {
+    public function tag(string $tag): Logger {
         if(!isset(self::$instances[$tag])) {
             self::$instances[$tag] = new Logger($tag);
         }
